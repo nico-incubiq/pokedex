@@ -30,4 +30,19 @@ final class PokemonControllerTest {
                         """, true));
     }
 
+    @Test
+    void getTranslatedPokemonReturnsMewtwo() throws Exception {
+        mockMvc.perform(get("/pokemon/translated/pikachu")
+                .contentType("application/json"))
+                .andExpect(status().isOk())
+                .andExpect(content().json("""
+                        {
+                            "name": "mewtwo",
+                            "description": "It was created by a scientist after years of horrific gene splicing and dna engineering experiments, it was.",
+                            "habitat": "rare",
+                            "isLegendary": true
+                        }
+                        """, true));
+    }
+
 }

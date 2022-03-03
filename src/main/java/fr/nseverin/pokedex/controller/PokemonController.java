@@ -20,4 +20,14 @@ final class PokemonController {
         );
     }
 
+    @GetMapping("/translated/{pokemonName}")
+    Pokemon getTranslatedPokemon(@PathVariable String pokemonName) {
+        return new Pokemon(
+                "mewtwo",
+                "It was created by a scientist after years of horrific gene splicing and dna engineering experiments, it was.",
+                "rare",
+                true
+        );
+    }
+
 }
