@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(controllers = PokemonController.class)
-public class PokemonControllerTest {
+final class PokemonControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

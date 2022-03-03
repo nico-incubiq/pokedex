@@ -8,11 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/pokemon")
-public class PokemonController {
+final class PokemonController {
 
     @GetMapping("/{pokemonName}")
     Pokemon getPokemon(@PathVariable String pokemonName) {
-        return new Pokemon(pokemonName);
+        return new Pokemon(
+                "mewtwo",
+                "It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.",
+                "rare",
+                true
+        );
     }
 
 }
