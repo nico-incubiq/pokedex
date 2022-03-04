@@ -21,9 +21,7 @@ public class PokemonServiceImplTest {
 
     @BeforeEach
     void setUp() {
-        pokemonService = new PokemonServiceImpl(
-                pokemonRepository
-        );
+        pokemonService = new PokemonServiceImpl(pokemonRepository);
     }
 
     @Test
