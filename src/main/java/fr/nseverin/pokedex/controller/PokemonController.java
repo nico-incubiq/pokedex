@@ -20,12 +20,12 @@ final class PokemonController {
     }
 
     @GetMapping("/{pokemonName}")
-    Pokemon getPokemon(@PathVariable String pokemonName) {
+    Pokemon getPokemon(@PathVariable final String pokemonName) {
         return pokemonService.fetchPokemon(pokemonName);
     }
 
     @GetMapping("/translated/{pokemonName}")
-    Pokemon getTranslatedPokemon(@PathVariable String pokemonName) {
+    Pokemon getTranslatedPokemon(@PathVariable final String pokemonName) {
         return pokemonService.fetchTranslatedPokemon(pokemonName);
     }
 
