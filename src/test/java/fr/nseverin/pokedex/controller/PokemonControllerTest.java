@@ -3,6 +3,7 @@ package fr.nseverin.pokedex.controller;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -18,7 +19,7 @@ final class PokemonControllerTest {
     @Test
     void getPokemonReturnsMewtwo() throws Exception {
         mockMvc.perform(get("/pokemon/mewtwo")
-                .contentType("application/json"))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         {
@@ -33,7 +34,7 @@ final class PokemonControllerTest {
     @Test
     void getTranslatedPokemonReturnsMewtwo() throws Exception {
         mockMvc.perform(get("/pokemon/translated/pikachu")
-                .contentType("application/json"))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("""
                         {
