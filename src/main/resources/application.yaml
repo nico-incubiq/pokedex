@@ -1,2 +1,7 @@
 springdoc:
   show-actuator: true
+
+pokedex:
+  external-apis:
+    pokeapi:
+      base-url: https://pokeapi.co/api/v2/pokemon-species

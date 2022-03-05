@@ -1,7 +1,7 @@
 package fr.nseverin.pokedex.respository;
 
 import fr.nseverin.pokedex.dto.Pokemon;
-import fr.nseverin.pokedex.repository.PokemonRepositoryRestImpl;
+import fr.nseverin.pokedex.repository.PokemonRepositoryPokeapiImpl;
 import fr.nseverin.pokedex.repository.entity.pokeapi.PokemonSpecies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,16 +16,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class PokemonRepositoryRestImplTest {
+public class PokemonRepositoryPokeapiImplTest {
 
     @Mock
     private RestTemplate restTemplate;
 
-    private PokemonRepositoryRestImpl pokemonRepository;
+    private PokemonRepositoryPokeapiImpl pokemonRepository;
 
     @BeforeEach
     void setUp() {
-        pokemonRepository = new PokemonRepositoryRestImpl(restTemplate);
+        pokemonRepository = new PokemonRepositoryPokeapiImpl(restTemplate, "base-url");
     }
 
     @Test
@@ -36,7 +36,7 @@ public class PokemonRepositoryRestImplTest {
                 "Pokemon name",
                 true
         );
-        when(restTemplate.getForObject("https://pokeapi.co/api/v2/pokemon-species/mewtwo", PokemonSpecies.class)).thenReturn(pokemon);
+        when(restTemplate.getForObject("base-url/mewtwo", PokemonSpecies.class)).thenReturn(pokemon);
 
         assertThat(pokemonRepository.fetchPokemon("mewtwo")).isEqualTo(new Pokemon(
                 "Pokemon name",
