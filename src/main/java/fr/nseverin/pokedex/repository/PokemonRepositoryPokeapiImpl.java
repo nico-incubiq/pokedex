@@ -24,7 +24,7 @@ public class PokemonRepositoryPokeapiImpl implements PokemonRepository {
     }
 
     @Override
-    public Pokemon fetchPokemon(String pokemonName) {
+    public Pokemon fetchPokemon(final String pokemonName) {
         var pokemonSpecies = restTemplate.getForObject("%s/%s".formatted(baseUrl, pokemonName), PokemonSpecies.class);
 
         return new Pokemon(
@@ -32,6 +32,7 @@ public class PokemonRepositoryPokeapiImpl implements PokemonRepository {
                 Optional.ofNullable(pokemonSpecies.flavorTextEntries())
                         .flatMap(list -> list.stream().findFirst())
                         .map(PokemonSpecies.FlavorText::flavorText)
+                        // The test contains all sorts of unwanted blank characters, replace them with normal spaces.
                         .map(text -> text.replaceAll("\\s", " "))
                         .orElse(null),
                 Optional.ofNullable(pokemonSpecies.habitat())

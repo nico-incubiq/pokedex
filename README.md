@@ -29,3 +29,4 @@ services; it would be considerate
 
 # TODO
 - Dockerfile
+- Negative test cases (API errors, pokemon not found)

@@ -16,10 +16,10 @@ public record PokemonSpecies(
     public record FlavorText(
         @JsonProperty("flavor_text")
         String flavorText
-    ) {};
+    ) {}
 
     public record Habitat(
         String name
-    ) {};
+    ) {}
 
-};
+}
