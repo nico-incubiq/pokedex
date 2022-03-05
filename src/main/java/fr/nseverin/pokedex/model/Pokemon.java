@@ -5,4 +5,4 @@ public record Pokemon (
     String description,
     String habitat,
     boolean isLegendary
-) {};
+) {}

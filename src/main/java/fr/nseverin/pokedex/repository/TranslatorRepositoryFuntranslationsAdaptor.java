@@ -1,6 +1,5 @@
 package fr.nseverin.pokedex.repository;
 
-import fr.nseverin.pokedex.exception.InternalServerError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,13 +15,9 @@ public final class TranslatorRepositoryFuntranslationsAdaptor implements Transla
 
     @Override
     public String translate(final String source, final Language destinationLanguage) {
-        try {
-            return funtranslationsClient.translate(source, destinationLanguage.name().toLowerCase())
-                    .contents()
-                    .translated();
-        } catch (InternalServerError e) {
-            return source;
-        }
+        return funtranslationsClient.translate(source, destinationLanguage.name().toLowerCase())
+                .contents()
+                .translated();
     }
 
 }

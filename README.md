@@ -70,11 +70,6 @@ by deploying an additional Redis / Memcached server, or by using a `WeakHashMap`
 - Add rate limiting; even more considering we are hitting external downstream
 services; it would be considerate.
 
-### Plans
+### Subscriptions
 - FunTranslations has a paid plan which lifts the rate limiting, this would be to
 consider for production.
-
-# TODO
-- Decide what to do if API return null, rather than having all the Optionals
-- Code comments where necessary
-- OpenApi comments
