@@ -28,7 +28,7 @@ public final class PokemonServiceImpl implements PokemonService {
 
     @Override
     public Pokemon fetchTranslatedPokemon(final String pokemonName) {
-        var pokemon = pokemonRepository.fetchPokemon(pokemonName);
+        final var pokemon = pokemonRepository.fetchPokemon(pokemonName);
 
         return new Pokemon(
                 pokemon.name(),

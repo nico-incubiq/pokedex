@@ -1,32 +1,16 @@
-package fr.nseverin.pokedex.repository;
+package fr.nseverin.pokedex.repository.mapper;
 
 import fr.nseverin.pokedex.model.Pokemon;
 import fr.nseverin.pokedex.repository.model.pokeapi.PokemonSpecies;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Repository
-public final class PokemonRepositoryPokeapiImpl implements PokemonRepository {
-
-    private final RestTemplate restTemplate;
-
-    private final String urlPattern;
-
-    @Autowired
-    public PokemonRepositoryPokeapiImpl(final RestTemplate restTemplate,
-                                        @Value("${pokedex.external-apis.pokeapi.url-pattern}") final String urlPattern) {
-        this.restTemplate = restTemplate;
-        this.urlPattern = urlPattern;
-    }
+@Component
+public final class PokemonSpeciesToPokemonMapperImpl implements PokemonSpeciesToPokemonMapper {
 
     @Override
-    public Pokemon fetchPokemon(final String pokemonName) {
-        var pokemonSpecies = restTemplate.getForObject(urlPattern, PokemonSpecies.class, pokemonName);
-
+    public Pokemon map(final PokemonSpecies pokemonSpecies) {
         return new Pokemon(
                 Optional.ofNullable(pokemonSpecies)
                         .map(PokemonSpecies::name)

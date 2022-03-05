@@ -24,7 +24,7 @@ public final class TranslatorRepositoryFuntranslationsImpl implements Translator
 
     @Override
     public String translate(final String source, final Language destinationLanguage) {
-        var translation = restTemplate.getForObject(urlPattern, FuntranslationResult.class,
+        final var translation = restTemplate.getForObject(urlPattern, FuntranslationResult.class,
                 destinationLanguage.name().toLowerCase(), source);
 
         return Optional.ofNullable(translation)

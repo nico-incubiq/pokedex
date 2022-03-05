@@ -9,6 +9,7 @@ class RestConfiguration {
 
     @Bean
     RestTemplate restTemplate() {
+        // TODO: Remove once migrated to Feign.
         return new RestTemplate();
     }
 

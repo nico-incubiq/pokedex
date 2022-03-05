@@ -1,6 +1,4 @@
 pokedex:
   external-apis:
-    pokeapi:
-      url-pattern: http://localhost:${wiremock.server.port:0}/pokeapi/{pokemonName}
-    funtranslations:
-      url-pattern: http://localhost:${wiremock.server.port:0}/funtranslations/{language}.json?text={text}
+    pokeapi.base-url: http://localhost:${wiremock.server.port:0}/pokeapi
+    funtranslations.url-pattern: http://localhost:${wiremock.server.port:0}/funtranslations/{language}.json?text={text}

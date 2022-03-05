@@ -6,5 +6,5 @@ springdoc:
 
 pokedex:
   external-apis:
-    pokeapi.url-pattern: https://pokeapi.co/api/v2/pokemon-species/{pokemonName}
+    pokeapi.base-url: https://pokeapi.co/api/v2/pokemon-species
     funtranslations.url-pattern: https://funtranslations.com/api/{language}.json?text={text}
