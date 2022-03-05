@@ -10,7 +10,7 @@
     </parent>
     <groupId>fr.nseverin</groupId>
     <artifactId>pokedex</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <name>pokedex</name>
     <description>Pokedex API</description>
     <properties>
