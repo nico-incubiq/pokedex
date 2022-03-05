@@ -1,9 +1,9 @@
 package fr.nseverin.pokedex.respository;
 
 import fr.nseverin.pokedex.model.Pokemon;
+import fr.nseverin.pokedex.repository.PokeapiClient;
 import fr.nseverin.pokedex.repository.PokemonRepositoryPokeapiAdaptor;
 import fr.nseverin.pokedex.repository.mapper.PokemonSpeciesToPokemonMapper;
-import fr.nseverin.pokedex.repository.model.PokeapiClient;
 import fr.nseverin.pokedex.repository.model.pokeapi.PokemonSpecies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ final class PokemonRepositoryPokeapiAdaptorTest {
     }
 
     @Test
-    void fetchPokemonUsesRestTemplate() {
+    void fetchPokemonUsesClient() {
         final var pokemonSpecies = new PokemonSpecies(
                 List.of(new PokemonSpecies.FlavorText("Description.")),
                 new PokemonSpecies.Habitat("Habitat description"),

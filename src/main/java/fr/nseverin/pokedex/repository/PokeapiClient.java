@@ -1,4 +1,4 @@
-package fr.nseverin.pokedex.repository.model;
+package fr.nseverin.pokedex.repository;
 
 import fr.nseverin.pokedex.repository.model.pokeapi.PokemonSpecies;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface PokeapiClient {
 
     @RequestMapping(method = RequestMethod.GET, path = "/{pokemonName}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    PokemonSpecies fetchPokemon(@PathVariable String pokemonName);
+    PokemonSpecies fetchPokemon(@PathVariable final String pokemonName);
 
 }

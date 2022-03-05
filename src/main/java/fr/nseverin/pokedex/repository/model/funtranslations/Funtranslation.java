@@ -1,6 +1,6 @@
 package fr.nseverin.pokedex.repository.model.funtranslations;
 
-public record FuntranslationResult(
+public record Funtranslation(
     Content contents
 ) {
 
