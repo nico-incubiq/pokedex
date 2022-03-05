@@ -2,15 +2,13 @@ package fr.nseverin.pokedex.respository;
 
 import fr.nseverin.pokedex.repository.Language;
 import fr.nseverin.pokedex.repository.TranslatorRepositoryFuntranslationsImpl;
-import fr.nseverin.pokedex.repository.entity.funtranslations.FuntranslationResult;
+import fr.nseverin.pokedex.repository.model.funtranslations.FuntranslationResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;

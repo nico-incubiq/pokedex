@@ -1,4 +1,4 @@
-package fr.nseverin.pokedex.repository.entity.funtranslations;
+package fr.nseverin.pokedex.repository.model.funtranslations;
 
 public record FuntranslationResult(
     Content contents

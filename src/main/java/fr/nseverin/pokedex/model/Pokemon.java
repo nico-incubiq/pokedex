@@ -1,4 +1,4 @@
-package fr.nseverin.pokedex.dto;
+package fr.nseverin.pokedex.model;
 
 public record Pokemon (
     String name,

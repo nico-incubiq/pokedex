@@ -1,6 +1,6 @@
 package fr.nseverin.pokedex.service;
 
-import fr.nseverin.pokedex.dto.Pokemon;
+import fr.nseverin.pokedex.model.Pokemon;
 import fr.nseverin.pokedex.repository.Language;
 import fr.nseverin.pokedex.repository.PokemonRepository;
 import fr.nseverin.pokedex.repository.TranslatorRepository;

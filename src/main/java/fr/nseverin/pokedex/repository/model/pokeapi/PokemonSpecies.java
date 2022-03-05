@@ -1,4 +1,4 @@
-package fr.nseverin.pokedex.repository.entity.pokeapi;
+package fr.nseverin.pokedex.repository.model.pokeapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

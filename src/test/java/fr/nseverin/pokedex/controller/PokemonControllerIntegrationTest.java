@@ -1,6 +1,6 @@
 package fr.nseverin.pokedex.controller;
 
-import fr.nseverin.pokedex.dto.Pokemon;
+import fr.nseverin.pokedex.model.Pokemon;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

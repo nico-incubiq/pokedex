@@ -1,6 +1,6 @@
 package fr.nseverin.pokedex.service;
 
-import fr.nseverin.pokedex.dto.Pokemon;
+import fr.nseverin.pokedex.model.Pokemon;
 import fr.nseverin.pokedex.repository.Language;
 import fr.nseverin.pokedex.repository.PokemonRepository;
 import fr.nseverin.pokedex.repository.TranslatorRepository;
@@ -39,7 +39,9 @@ public final class PokemonServiceImpl implements PokemonService {
     }
 
     private Language selectDestinationLanguage(final Pokemon pokemon) {
-        return (pokemon.isLegendary() || "cave".equals(pokemon.habitat())) ? Language.YODA : Language.SHAKESPEARE;
+        return (pokemon.isLegendary() || "cave".equals(pokemon.habitat()))
+                ? Language.YODA
+                : Language.SHAKESPEARE;
     }
 
 }

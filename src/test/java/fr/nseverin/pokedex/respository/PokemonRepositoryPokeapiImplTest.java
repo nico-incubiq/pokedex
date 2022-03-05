@@ -1,8 +1,8 @@
 package fr.nseverin.pokedex.respository;
 
-import fr.nseverin.pokedex.dto.Pokemon;
+import fr.nseverin.pokedex.model.Pokemon;
 import fr.nseverin.pokedex.repository.PokemonRepositoryPokeapiImpl;
-import fr.nseverin.pokedex.repository.entity.pokeapi.PokemonSpecies;
+import fr.nseverin.pokedex.repository.model.pokeapi.PokemonSpecies;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

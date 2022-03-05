@@ -1,6 +1,6 @@
 package fr.nseverin.pokedex.controller;
 
-import fr.nseverin.pokedex.dto.Pokemon;
+import fr.nseverin.pokedex.model.Pokemon;
 import fr.nseverin.pokedex.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

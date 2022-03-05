@@ -1,6 +1,6 @@
 package fr.nseverin.pokedex.service;
 
-import fr.nseverin.pokedex.dto.Pokemon;
+import fr.nseverin.pokedex.model.Pokemon;
 
 public interface PokemonService {
     Pokemon fetchPokemon(final String pokemonName);

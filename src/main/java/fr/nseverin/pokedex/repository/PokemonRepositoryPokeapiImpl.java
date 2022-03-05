@@ -1,7 +1,7 @@
 package fr.nseverin.pokedex.repository;
 
-import fr.nseverin.pokedex.dto.Pokemon;
-import fr.nseverin.pokedex.repository.entity.pokeapi.PokemonSpecies;
+import fr.nseverin.pokedex.model.Pokemon;
+import fr.nseverin.pokedex.repository.model.pokeapi.PokemonSpecies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
