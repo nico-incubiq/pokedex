@@ -1,9 +1,10 @@
+management:
+  endpoints.web.exposure.include: health
+
 springdoc:
   show-actuator: true
 
 pokedex:
   external-apis:
-    pokeapi:
-      url-pattern: https://pokeapi.co/api/v2/pokemon-species/{pokemonName}
-    funtranslations:
-      url-pattern: https://funtranslations.com/api/{language}.json?text={text}
+    pokeapi.url-pattern: https://pokeapi.co/api/v2/pokemon-species/{pokemonName}
+    funtranslations.url-pattern: https://funtranslations.com/api/{language}.json?text={text}

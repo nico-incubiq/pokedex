@@ -1,6 +1,14 @@
+<img align="right" style="width: 15rem; margin: 2rem" src="assets/psyduck.png">
+
 # Pokedex API
-## Don't want to install anything?
-Try using the online OpenApi documentation [https://fun-pokedex.herokuapp.com/swagger-ui.html](https://fun-pokedex.herokuapp.com/swagger-ui.html).
+
+An API returning Pokemon information by name.  
+Featuring an endpoint which returns a funny version of the Pokemon description.
+
+## Want to try it out before installing anything?
+Check the online OpenApi documentation [https://fun-pokedex.herokuapp.com/swagger-ui.html](https://fun-pokedex.herokuapp.com/swagger-ui.html).
+
+You can use it to make API calls directly form the browser.
 
 ## Getting started running the app locally
 The easiest way to get started is to use Docker, as you won't have to configure your
@@ -10,7 +18,8 @@ if you do not have it already.
 Also make sure you have git installed. If you don't, follow the instructions for your platform
 at [https://git-scm.com/download](https://git-scm.com/download).
 
-[![asciicast](https://asciinema.org/a/GGy0xfnDb925mcYqpbqBPxQt8.png)](https://asciinema.org/a/GGy0xfnDb925mcYqpbqBPxQt8)
+Click the image below to watch the screen recoding:
+[![asciicast](assets/docker-asciinema.png)](https://asciinema.org/a/GGy0xfnDb925mcYqpbqBPxQt8)
 
 ### Check out the codebase
 - From the terminal, cd to your favorite project directory, and run the following
@@ -46,29 +55,26 @@ curl -s http://localhost/pokemon/mewtwo | jq
 docker container rm --force running-fun-pokedex
 ```
 
-## Design principles
-## Code organisation
-
-## Documentation
-You can access the API documentation at [/swagger-ui.html](http://localhost:8080/swagger-ui.html).
-
 ## To change for production
-## Storage
+### Caching
 - There is realistically not that many Pokemons out there, it would be more
 efficient to just download the full list and store it locally in a file in
 the project. Gotta Cach'Em All!
 - Same thing for the descriptions transformations, this is a static operation
 that will never change at runtime either, so it could be computed in advance
 and stored in a file.
+- If storage in a static file is not acceptable, we could implement a simple cache, either
+by deploying an additional Redis / Memcached server, or by using a `WeakHashMap`.
 
-## Security
-- Disable all management endpoints but the *health* one. Set up a different
-profile to have different configurations in prod and dev, or use DotEnv.
-- Add rate limiting, even more considering we are hitting external downstream
-services; it would be considerate
+### Security
+- Add rate limiting; even more considering we are hitting external downstream
+services; it would be considerate.
+
+### Plans
+- FunTranslations has a paid plan which lifts the rate limiting, this would be to
+consider for production.
 
 # TODO
-- Dockerfile
 - Negative test cases + error handling
   - API errors
   - pokemon not found 404, which currently 500 the server
