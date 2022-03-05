@@ -1,7 +1,7 @@
 package fr.nseverin.pokedex.repository.entity.funtranslations;
 
 public record FuntranslationResult(
-    Content content
+    Content contents
 ) {
 
     public record Content (

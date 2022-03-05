@@ -1,0 +1,27 @@
+{
+  "request": {
+    "urlPath": "/funtranslations/yoda.json",
+    "method": "GET",
+    "queryParameters" : {
+      "text" : {
+        "equalTo" : "It was created by a scientist after years of horrific gene splicing and DNA engineering experiments."
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "success": {
+        "total": 1
+      },
+      "contents": {
+        "translated": "Created by a scientist after years of horrific gene splicing and dna engineering experiments,  it was.",
+        "text": "It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.",
+        "translation": "yoda"
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

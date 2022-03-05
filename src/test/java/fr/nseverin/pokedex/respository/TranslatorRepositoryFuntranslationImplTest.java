@@ -25,12 +25,12 @@ final class TranslatorRepositoryFuntranslationImplTest {
 
     @BeforeEach
     void setUp() {
-        translatorRepository = new TranslatorRepositoryFuntranslationsImpl(restTemplate, "base-url");
+        translatorRepository = new TranslatorRepositoryFuntranslationsImpl(restTemplate, "base-url/{language}.json?text={text}");
     }
 
     @Test
     void translateToShakespeareUsesRestTemplate() {
-        when(restTemplate.getForObject("base-url/shakespeare.json", FuntranslationResult.class, Map.of("text", "Can you repeat the question?")))
+        when(restTemplate.getForObject("base-url/{language}.json?text={text}", FuntranslationResult.class, "shakespeare", "Can you repeat the question?"))
                 .thenReturn(new FuntranslationResult(new FuntranslationResult.Content("To be, or not to be, that is the question.")));
 
         assertThat(translatorRepository.translate("Can you repeat the question?", Language.SHAKESPEARE))
@@ -39,7 +39,7 @@ final class TranslatorRepositoryFuntranslationImplTest {
 
     @Test
     void translateToYodaUsesRestTemplate() {
-        when(restTemplate.getForObject("base-url/yoda.json", FuntranslationResult.class, Map.of("text", "I'll give it a try")))
+        when(restTemplate.getForObject("base-url/{language}.json?text={text}", FuntranslationResult.class, "yoda", "I'll give it a try"))
                 .thenReturn(new FuntranslationResult(new FuntranslationResult.Content("No. Try not. Do or do not. There is no try.")));
 
         assertThat(translatorRepository.translate("I'll give it a try", Language.YODA))

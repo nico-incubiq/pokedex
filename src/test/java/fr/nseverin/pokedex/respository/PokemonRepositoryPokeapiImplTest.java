@@ -25,7 +25,7 @@ final class PokemonRepositoryPokeapiImplTest {
 
     @BeforeEach
     void setUp() {
-        pokemonRepository = new PokemonRepositoryPokeapiImpl(restTemplate, "base-url");
+        pokemonRepository = new PokemonRepositoryPokeapiImpl(restTemplate, "base-url/{pokemonName}");
     }
 
     @Test
@@ -36,7 +36,7 @@ final class PokemonRepositoryPokeapiImplTest {
                 "Pokemon name",
                 true
         );
-        when(restTemplate.getForObject("base-url/mewtwo", PokemonSpecies.class)).thenReturn(pokemon);
+        when(restTemplate.getForObject("base-url/{pokemonName}", PokemonSpecies.class, "mewtwo")).thenReturn(pokemon);
 
         assertThat(pokemonRepository.fetchPokemon("mewtwo")).isEqualTo(new Pokemon(
                 "Pokemon name",

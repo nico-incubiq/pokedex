@@ -6,29 +6,31 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public final class TranslatorRepositoryFuntranslationsImpl implements TranslatorRepository {
 
     private final RestTemplate restTemplate;
 
-    private final String baseUrl;
+    private final String urlPattern;
 
     @Autowired
     public TranslatorRepositoryFuntranslationsImpl(final RestTemplate restTemplate,
-                                                   @Value("${pokedex.external-apis.funtranslations.base-url}") final String baseUrl) {
+                                                   @Value("${pokedex.external-apis.funtranslations.url-pattern}") final String urlPattern) {
         this.restTemplate = restTemplate;
-        this.baseUrl = baseUrl;
+        this.urlPattern = urlPattern;
     }
 
     @Override
     public String translate(final String source, final Language destinationLanguage) {
-        var translation = restTemplate.getForObject(
-                "%s/%s.json".formatted(baseUrl, destinationLanguage.name().toLowerCase()),
-                FuntranslationResult.class, Map.of("text", source));
+        var translation = restTemplate.getForObject(urlPattern, FuntranslationResult.class,
+                destinationLanguage.name().toLowerCase(), source);
 
-        return translation.content().translated();
+        return Optional.ofNullable(translation)
+                .map(FuntranslationResult::contents)
+                .map(FuntranslationResult.Content::translated)
+                .orElse(null);
     }
 
 }

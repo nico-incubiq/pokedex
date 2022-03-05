@@ -36,6 +36,19 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
+    void getPokemonReturnsZubat() {
+        final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/zubat".formatted(port), Pokemon.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.hasBody()).isTrue();
+        assertThat(response.getBody()).isEqualTo(new Pokemon(
+                "zubat",
+                "Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets.",
+                "cave",
+                false
+        ));
+    }
+
+    @Test
     void getPokemonReturnsPikachu() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/pikachu".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
@@ -55,9 +68,22 @@ final class PokemonControllerIntegrationTest {
         assertThat(response.hasBody()).isTrue();
         assertThat(response.getBody()).isEqualTo(new Pokemon(
                 "mewtwo",
-                "It was created by a scientist after years of horrific gene splicing and dna engineering experiments, it was.",
+                "Created by a scientist after years of horrific gene splicing and dna engineering experiments,  it was.",
                 "rare",
                 true
+        ));
+    }
+
+    @Test
+    void getTranslatedPokemonReturnsZubat() {
+        final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/zubat".formatted(port), Pokemon.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.hasBody()).isTrue();
+        assertThat(response.getBody()).isEqualTo(new Pokemon(
+                "zubat",
+                "Forms colonies in perpetually dark places.Ultrasonic waves to identify and approach targets,  uses.",
+                "cave",
+                false
         ));
     }
 
