@@ -126,4 +126,17 @@ final class PokemonControllerIntegrationTest {
         ));
     }
 
+    @Test
+    void getTranslatedPokemonReturnsDefaultDescriptionOnTranslationError() {
+        final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/ditto".formatted(port), Pokemon.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.hasBody()).isTrue();
+        assertThat(response.getBody()).isEqualTo(new Pokemon(
+                "ditto",
+                "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy.",
+                "urban",
+                false
+        ));
+    }
+
 }

@@ -1,25 +1,23 @@
 package fr.nseverin.pokedex.repository.model.pokeapi;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 
 public record PokemonSpecies(
-    @JsonProperty("flavor_text_entries")
-    List<FlavorText> flavorTextEntries,
-    Habitat habitat,
-    String name,
-    @JsonProperty("is_legendary")
-    boolean isLegendary
+    @JsonProperty("flavor_text_entries") @NonNull List<FlavorText> flavorTextEntries,
+    @NonNull Habitat habitat,
+    @NonNull String name,
+    @JsonProperty("is_legendary") @NonNull boolean isLegendary
 ) {
 
     public record FlavorText(
-        @JsonProperty("flavor_text")
-        String flavorText
+        @JsonProperty("flavor_text") @NonNull String flavorText
     ) {}
 
     public record Habitat(
-        String name
+        @NonNull String name
     ) {}
 
 }

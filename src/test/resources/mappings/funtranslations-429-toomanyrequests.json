@@ -1,0 +1,23 @@
+{
+  "request": {
+    "urlPath": "/funtranslations/shakespeare.json",
+    "method": "GET",
+    "queryParameters" : {
+      "text" : {
+        "equalTo" : "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy."
+      }
+    }
+  },
+  "response": {
+    "status": 429,
+    "jsonBody": {
+      "error": {
+        "code": 429,
+        "message": "Too Many Requests: Rate limit of 5 requests per hour exceeded. Please wait for 49 minutes and 21 seconds."
+      }
+    },
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    }
+  }
+}

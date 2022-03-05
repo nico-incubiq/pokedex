@@ -75,11 +75,6 @@ services; it would be considerate.
 consider for production.
 
 # TODO
-- Negative test cases + error handling
-  - API errors
-  - pokemon not found 404, which currently 500 the server
-  - funtranslations rate limiting 429, which currently 500 the server,
-    this is what TL meant in the guidelines; return non-translated string!
 - Decide what to do if API return null, rather than having all the Optionals
 - Code comments where necessary
 - OpenApi comments
