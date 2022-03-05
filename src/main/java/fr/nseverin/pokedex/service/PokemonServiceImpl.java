@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public final class PokemonServiceImpl implements PokemonService {
 
+    private static final String CAVE_HABITAT = "cave";
+
     private final PokemonRepository pokemonRepository;
 
     private final TranslatorRepository translatorRepository;
@@ -39,7 +41,7 @@ public final class PokemonServiceImpl implements PokemonService {
     }
 
     private Language selectDestinationLanguage(final Pokemon pokemon) {
-        return (pokemon.isLegendary() || "cave".equals(pokemon.habitat()))
+        return (pokemon.isLegendary() || CAVE_HABITAT.equals(pokemon.habitat()))
                 ? Language.YODA
                 : Language.SHAKESPEARE;
     }

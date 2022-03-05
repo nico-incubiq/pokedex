@@ -4,6 +4,10 @@ management:
 springdoc:
   show-actuator: true
 
+server:
+  error:
+    include-message: always
+
 pokedex:
   external-apis:
     pokeapi.base-url: https://pokeapi.co/api/v2/pokemon-species

@@ -1,0 +1,13 @@
+{
+  "request": {
+    "url": "/pokeapi/servererror",
+    "method": "GET"
+  },
+  "response": {
+    "status": 500,
+    "body": "Internal Server Error",
+    "headers": {
+      "Content-Type": "text/plain; charset=utf-8"
+    }
+  }
+}

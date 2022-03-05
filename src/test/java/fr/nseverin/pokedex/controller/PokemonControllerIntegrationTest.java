@@ -9,6 +9,8 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -58,6 +60,30 @@ final class PokemonControllerIntegrationTest {
                 "When several of these POKéMON gather, their electricity could build and cause lightning storms.",
                 "forest",
                 false
+        ));
+    }
+
+    @Test
+    void getPokemonNotFound() {
+        final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/notfound".formatted(port), Map.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(404);
+        assertThat(response.hasBody()).isTrue();
+        assertThat(response.getBody()).containsAllEntriesOf(Map.of(
+                "message", "Pokemon not found",
+                "path", "/pokemon/notfound",
+                "status", 404
+        ));
+    }
+
+    @Test
+    void getPokemonUnexpectedError() {
+        final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/servererror".formatted(port), Map.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(500);
+        assertThat(response.hasBody()).isTrue();
+        assertThat(response.getBody()).containsAllEntriesOf(Map.of(
+                "message", "Internal server error",
+                "path", "/pokemon/servererror",
+                "status", 500
         ));
     }
 
