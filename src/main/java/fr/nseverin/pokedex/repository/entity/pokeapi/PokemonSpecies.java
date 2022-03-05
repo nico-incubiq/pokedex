@@ -10,7 +10,7 @@ public record PokemonSpecies(
     Habitat habitat,
     String name,
     @JsonProperty("is_legendary")
-    Boolean isLegendary
+    boolean isLegendary
 ) {
 
     public record FlavorText(
