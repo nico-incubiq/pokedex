@@ -8,14 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PokemonServiceImpl implements PokemonService {
+public final class PokemonServiceImpl implements PokemonService {
 
     private final PokemonRepository pokemonRepository;
 
     private final TranslatorRepository translatorRepository;
 
     @Autowired
-    public PokemonServiceImpl(final PokemonRepository pokemonRepository, TranslatorRepository translatorRepository) {
+    public PokemonServiceImpl(final PokemonRepository pokemonRepository,
+                              final TranslatorRepository translatorRepository) {
         this.pokemonRepository = pokemonRepository;
         this.translatorRepository = translatorRepository;
     }

@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Map;
 
 @Repository
-public class TranslatorRepositoryFuntranslationsImpl implements TranslatorRepository {
+public final class TranslatorRepositoryFuntranslationsImpl implements TranslatorRepository {
 
     private final RestTemplate restTemplate;
 
@@ -24,7 +24,8 @@ public class TranslatorRepositoryFuntranslationsImpl implements TranslatorReposi
 
     @Override
     public String translate(final String source, final Language destinationLanguage) {
-        var translation = restTemplate.getForObject("%s/%s.json".formatted(baseUrl, destinationLanguage.name().toLowerCase()),
+        var translation = restTemplate.getForObject(
+                "%s/%s.json".formatted(baseUrl, destinationLanguage.name().toLowerCase()),
                 FuntranslationResult.class, Map.of("text", source));
 
         return translation.content().translated();

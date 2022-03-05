@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Optional;
 
 @Repository
-public class PokemonRepositoryPokeapiImpl implements PokemonRepository {
+public final class PokemonRepositoryPokeapiImpl implements PokemonRepository {
 
     private final RestTemplate restTemplate;
 
