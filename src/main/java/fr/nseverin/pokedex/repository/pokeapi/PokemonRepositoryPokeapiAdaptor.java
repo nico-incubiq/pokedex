@@ -1,7 +1,9 @@
-package fr.nseverin.pokedex.repository;
+package fr.nseverin.pokedex.repository.pokeapi;
 
 import fr.nseverin.pokedex.model.Pokemon;
-import fr.nseverin.pokedex.repository.mapper.PokemonSpeciesToPokemonMapper;
+import fr.nseverin.pokedex.repository.PokemonRepository;
+import fr.nseverin.pokedex.repository.pokeapi.mapper.PokemonSpeciesToPokemonMapper;
+import fr.nseverin.pokedex.repository.pokeapi.client.PokeapiClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

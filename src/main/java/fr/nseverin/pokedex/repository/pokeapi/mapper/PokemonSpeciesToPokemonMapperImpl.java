@@ -1,7 +1,7 @@
-package fr.nseverin.pokedex.repository.mapper;
+package fr.nseverin.pokedex.repository.pokeapi.mapper;
 
 import fr.nseverin.pokedex.model.Pokemon;
-import fr.nseverin.pokedex.repository.model.pokeapi.PokemonSpecies;
+import fr.nseverin.pokedex.repository.pokeapi.model.PokemonSpecies;
 import org.springframework.stereotype.Component;
 
 @Component

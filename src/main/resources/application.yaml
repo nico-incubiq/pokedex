@@ -8,7 +8,11 @@ server:
   error:
     include-message: always
 
+logging.level:
+  fr.nseverin.pokedex.repository.funtranslations.client.FuntranslationsClient: DEBUG
+  fr.nseverin.pokedex.repository.pokeapi.client.PokeapiClient: DEBUG
+
 pokedex:
   external-apis:
     pokeapi.base-url: https://pokeapi.co/api/v2/pokemon-species
-    funtranslations.base-url: https://funtranslations.com/api
+    funtranslations.base-url: https://api.funtranslations.com/translate

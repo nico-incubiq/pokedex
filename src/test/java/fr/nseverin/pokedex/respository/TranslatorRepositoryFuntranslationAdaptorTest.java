@@ -1,9 +1,9 @@
 package fr.nseverin.pokedex.respository;
 
-import fr.nseverin.pokedex.repository.FuntranslationsClient;
 import fr.nseverin.pokedex.repository.Language;
-import fr.nseverin.pokedex.repository.TranslatorRepositoryFuntranslationsAdaptor;
-import fr.nseverin.pokedex.repository.model.funtranslations.Funtranslation;
+import fr.nseverin.pokedex.repository.funtranslations.TranslatorRepositoryFuntranslationsAdaptor;
+import fr.nseverin.pokedex.repository.funtranslations.client.FuntranslationsClient;
+import fr.nseverin.pokedex.repository.funtranslations.model.Funtranslation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

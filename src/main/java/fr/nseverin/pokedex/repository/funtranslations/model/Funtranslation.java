@@ -1,4 +1,4 @@
-package fr.nseverin.pokedex.repository.model.funtranslations;
+package fr.nseverin.pokedex.repository.funtranslations.model;
 
 import org.springframework.lang.NonNull;
 

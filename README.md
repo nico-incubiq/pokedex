@@ -73,3 +73,7 @@ services; it would be considerate.
 ### Subscriptions
 - FunTranslations has a paid plan which lifts the rate limiting, this would be to
 consider for production.
+
+### Circuit breaker
+- Implement the circuit breaker pattern to alleviate the negative impact of
+downstream APIs being down

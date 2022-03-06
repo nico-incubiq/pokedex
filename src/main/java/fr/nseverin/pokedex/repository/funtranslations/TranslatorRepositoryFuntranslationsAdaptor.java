@@ -1,5 +1,8 @@
-package fr.nseverin.pokedex.repository;
+package fr.nseverin.pokedex.repository.funtranslations;
 
+import fr.nseverin.pokedex.repository.Language;
+import fr.nseverin.pokedex.repository.TranslatorRepository;
+import fr.nseverin.pokedex.repository.funtranslations.client.FuntranslationsClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
