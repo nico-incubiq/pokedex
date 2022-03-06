@@ -38,11 +38,15 @@ docker build --tag fun-pokedex .
 ```bash
 docker run --detach --publish 80:8080 --name running-fun-pokedex fun-pokedex
 ```
-- You can check the app is running and healthy using the below command
+- You can check the app is running and healthy using the below command.
+As soon as it displays `(healthy)`, you know the app is running.
 ```bash
 docker container ls
 ```
-- As soon as it displays `(healthy)`, you know the app is running
+- You can also check the logs of the application with this command
+```bash
+docker logs -f running-fun-pokedex
+```
 - Open your favorite browser at [http://localhost/swagger-ui.html](http://localhost/swagger-ui.html) to start using the app
 - Or test from the terminal with `curl` and `jq` (if you have them)
 ```bash
