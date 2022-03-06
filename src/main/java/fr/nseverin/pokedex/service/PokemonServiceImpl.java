@@ -47,9 +47,11 @@ public final class PokemonServiceImpl implements PokemonService {
 
     private String translateDescription(final Pokemon pokemon) {
         try {
-            return translatorRepository.translate(pokemon.description(), selectDestinationLanguage(pokemon));
+            final var descriptionTranslation = selectDestinationLanguage(pokemon);
+
+            return translatorRepository.translate(pokemon.description(), descriptionTranslation);
         } catch (InternalServerError e) {
-            LOGGER.warn("Funtranslation encountered an error");
+            LOGGER.warn("Funtranslations encountered an error");
 
             // In case of any server error, return the original description.
             return pokemon.description();

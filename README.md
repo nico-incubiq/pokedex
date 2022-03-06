@@ -38,7 +38,7 @@ docker build --tag fun-pokedex .
 ```bash
 docker run --detach --publish 80:8080 --name running-fun-pokedex fun-pokedex
 ```
-- You can check the app is running and healthy using the below command.
+- You can check the application is running and healthy using the below command.
 As soon as it displays `(healthy)`, you know the app is running.
 ```bash
 docker container ls
@@ -64,7 +64,7 @@ docker container rm --force running-fun-pokedex
 - There is realistically not that many Pokemons out there, it would be more
 efficient to just download the full list and store it locally in a file in
 the project. Gotta Cach'Em All!
-- Same thing for the descriptions transformations, this is a static operation
+- Same thing for the description transformations, this is a static operation
 that will never change at runtime either, so it could be computed in advance
 and stored in a file.
 - If storage in a static file is not acceptable, we could implement a simple cache, either
@@ -80,4 +80,4 @@ consider for production.
 
 ### Circuit breaker
 - Implement the circuit breaker pattern to alleviate the negative impact of
-downstream APIs being down
+downstream APIs being down.

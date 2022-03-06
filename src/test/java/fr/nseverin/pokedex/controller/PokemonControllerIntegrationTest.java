@@ -1,6 +1,7 @@
 package fr.nseverin.pokedex.controller;
 
 import fr.nseverin.pokedex.model.Pokemon;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +26,8 @@ final class PokemonControllerIntegrationTest {
     private Integer port;
 
     @Test
-    void getPokemonReturnsMewtwo() {
+    @DisplayName("It can request a legendary pokemon like Mewtwo")
+    void getLegendaryPokemonMewtwo() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/mewtwo".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
         assertThat(response.hasBody()).isTrue();
@@ -38,7 +40,8 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void getPokemonReturnsZubat() {
+    @DisplayName("It can request a cave pokemon like Mewtwo")
+    void getCavePokemonZubat() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/zubat".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
         assertThat(response.hasBody()).isTrue();
@@ -51,7 +54,8 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void getPokemonReturnsPikachu() {
+    @DisplayName("It can request any other pokemon like Pikachu")
+    void getRegularPokemonPikachu() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/pikachu".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
         assertThat(response.hasBody()).isTrue();
@@ -64,6 +68,7 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
+    @DisplayName("When requesting a non-existing Pokemon, return \"Pokemon not found\"")
     void getPokemonNotFound() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/notfound".formatted(port), Map.class);
         assertThat(response.getStatusCode().value()).isEqualTo(404);
@@ -76,7 +81,8 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void getPokemonUnexpectedError() {
+    @DisplayName("When pokeapi errors, return an \"Internal server error\"")
+    void getPokemonUnexpectedPokeapiError() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/servererror".formatted(port), Map.class);
         assertThat(response.getStatusCode().value()).isEqualTo(500);
         assertThat(response.hasBody()).isTrue();
@@ -88,7 +94,8 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void getTranslatedPokemonReturnsMewtwo() {
+    @DisplayName("When requesting a legendary Pokemon like Mewtwo, apply the Yoda transformation to its description")
+    void getTranslatedMewtwoReturnsYodaDescription() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/mewtwo".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
         assertThat(response.hasBody()).isTrue();
@@ -101,7 +108,8 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void getTranslatedPokemonReturnsZubat() {
+    @DisplayName("When requesting a cave Pokemon like Zubat, apply the Yoda transformation to its description")
+    void getTranslatedZubatReturnsYodaDescription() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/zubat".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
         assertThat(response.hasBody()).isTrue();
@@ -114,7 +122,8 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
-    void getTranslatedPokemonReturnsPikachu() {
+    @DisplayName("When requesting a non-cave non-legendary Pokemon like Pikachu, apply the Shakespeare transformation to its description")
+    void getTranslatedPikachuReturnsShakespeareDescription() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/pikachu".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
         assertThat(response.hasBody()).isTrue();
@@ -127,6 +136,7 @@ final class PokemonControllerIntegrationTest {
     }
 
     @Test
+    @DisplayName("When the funtranslations API errors, return the original description")
     void getTranslatedPokemonReturnsDefaultDescriptionOnTranslationError() {
         final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/ditto".formatted(port), Pokemon.class);
         assertThat(response.getStatusCode().value()).isEqualTo(200);
@@ -136,6 +146,32 @@ final class PokemonControllerIntegrationTest {
                 "Capable of copying an enemy's genetic code to instantly transform itself into a duplicate of the enemy.",
                 "urban",
                 false
+        ));
+    }
+
+    @Test
+    @DisplayName("When requesting a non-existing translated Pokemon, return \"Pokemon not found\"")
+    void getTranslatedPokemonNotFound() {
+        final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/notfound".formatted(port), Map.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(404);
+        assertThat(response.hasBody()).isTrue();
+        assertThat(response.getBody()).containsAllEntriesOf(Map.of(
+                "message", "Pokemon not found",
+                "path", "/pokemon/translated/notfound",
+                "status", 404
+        ));
+    }
+
+    @Test
+    @DisplayName("When pokeapi errors on the translated endpoint, return an \"Internal server error\"")
+    void getTranslatedPokemonUnexpectedPokeapiError() {
+        final var response = testRestTemplate.getForEntity("http://localhost:%d/pokemon/translated/servererror".formatted(port), Map.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(500);
+        assertThat(response.hasBody()).isTrue();
+        assertThat(response.getBody()).containsAllEntriesOf(Map.of(
+                "message", "Internal server error",
+                "path", "/pokemon/translated/servererror",
+                "status", 500
         ));
     }
 

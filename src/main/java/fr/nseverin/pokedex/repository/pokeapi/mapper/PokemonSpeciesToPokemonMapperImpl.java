@@ -13,8 +13,9 @@ public final class PokemonSpeciesToPokemonMapperImpl implements PokemonSpeciesTo
                 pokemonSpecies.name(),
                 pokemonSpecies.flavorTextEntries().stream().findFirst()
                         .map(PokemonSpecies.FlavorText::flavorText)
-                        // The test contains all sorts of unwanted blank characters, replace them with normal spaces.
-                        .map(text -> text.replaceAll("\\s", " "))
+                        // The description text contains all sorts of blank characters like \n \f etc.,
+                        // replace them all with a single normal space.
+                        .map(text -> text.replaceAll("\\s+", " "))
                         .orElseThrow(),
                 pokemonSpecies.habitat().name(),
                 pokemonSpecies.isLegendary()
